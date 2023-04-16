@@ -1,0 +1,40 @@
+# === RUN ===
+#$ docker-compose build
+#$ docker-compose up
+# or
+#$ docker-compose up -d (no logs)
+
+version: '3.8'
+
+networks:
+  dev:
+    driver: bridge 
+
+services:
+  web:
+    container_name: web
+    build: ../SRC/Web.Application/Web.Application
+      #dockerfile: EFCore.PostgeSql.POC/Dockerfile
+    depends_on:
+      - db
+    ports:
+      - '80:80'
+    environment:
+      - ConnectionString=host=db;port=5432;database=school_db;username=postgres;password=postgres;pooling=true;
+    networks:
+       - dev
+     
+  db:
+    image: postgres:latest
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=school_db
+    ports:
+      - '54320:5432'
+    restart: always
+    volumes:
+      - /var/lib/postgresql/data
+    networks:
+      - dev
