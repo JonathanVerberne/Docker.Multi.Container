@@ -12,7 +12,7 @@ Next pick option 1 or option 2.
 
 ## Option 1 - No SSL/HTTP
 
- 2. Navigate and run the docker-compose.yml file located in Docker.Multi.Container/Docker/
+ 2. Navigate and run the docker-compose.yml file located in `Docker.Multi.Container/Docker/`
 
 ## Option 2 - SSL/HTTPS
 
@@ -22,5 +22,5 @@ Next pick option 1 or option 2.
   dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p password
   dotnet dev-certs https --trust
 ```
-Navigate and run the docker-compose.yml file located in Docker.Multi.Container/Docker/HTTPS
+ 3. Navigate and run the docker-compose.yml file located in `Docker.Multi.Container/Docker/HTTPS`
 
