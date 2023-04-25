@@ -5,6 +5,10 @@ This project demonstrates the use of multiple docker containers in a single netw
 
 In this sample project I've added two options to run the website, one being without SSL and the other with SSL on HTTPS with a self signed certificate.
 
+## Prerequisites
+In order to run this project you will the followign installed;
+- Install Docker Descktop (https://docs.docker.com/get-docker/)
+
 ## Get Started
  1. Clone this repo.
 
