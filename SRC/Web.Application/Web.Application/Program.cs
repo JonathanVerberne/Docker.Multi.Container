@@ -15,12 +15,17 @@ builder.Services.AddRazorPages();
 var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
 Console.WriteLine("db conn is..." + connectionString);
 
-builder.Services.AddEntityFrameworkNpgsql().AddDbContext<SchoolContext>(options =>
-options.UseNpgsql(connectionString));
-
-// read from appsettings.json
-//builder.Services.AddEntityFrameworkNpgsql().AddDbContext<SchoolContext>(options =>
-//options.UseNpgsql(builder.Configuration.GetConnectionString("DbContext")));
+if (connectionString != null)
+{
+    builder.Services.AddEntityFrameworkNpgsql().AddDbContext<SchoolContext>(options =>
+        options.UseNpgsql(connectionString));
+}
+else
+{
+    // read from appsettings.json
+    builder.Services.AddEntityFrameworkNpgsql().AddDbContext<SchoolContext>(options =>
+        options.UseNpgsql(builder.Configuration.GetConnectionString("DbContext")));
+}
 
 var app = builder.Build();
 
